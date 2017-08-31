@@ -1,0 +1,88 @@
+{% extends "base_file.html" %}
+{% block content %}
+<div id="chartmain1" class="page-content" style="height:200px"></div>
+
+{%endblock%}
+
+
+{%block jsfile%}
+    fun()
+     function fun(){
+    var type1 = {{taskinfo_list|safe}}
+    //var type1 = [{'device':'Android',value:500},{'device':'IOS',value:200},{'device':'PC',value:300},{'device':'Ohter',value:900}]
+    option = {
+    title : {
+        text: '任务饼状图',
+        subtext: '点击区域查看详情',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'left',
+        data:[]
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {
+                show: true,
+                type: ['pie', 'funnel'],
+                option: {
+                    funnel: {
+                        x: '25%',
+                        width: '50%',
+                        funnelAlign: 'left',
+                        max: 1548
+                    }
+                }
+            },
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    series : [
+        {
+            name:'访问来源',
+            type:'pie',
+            radius : [0, '50%'],
+            center: ['50%', '50%'],
+            data:[
+
+            ]
+        }
+    ]
+};
+    for (var i = 0; i < type1.length; i++) {
+           option['legend']['data'].push(type1[i]['topic'])
+           option['series'][0]['data'].push({'value':type1[i]['value'],'name':type1[i]['topic']})
+
+    }
+
+    var myChart = echarts.init(document.getElementById('chartmain1'));
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+    //绑定点击事件
+    myChart.on('click',  function eConsole(param){
+        var index = param.dataIndex;
+         index = Number(index)
+    	var topic = option['legend']['data'][index]
+
+    window.location.href='/Back_manager/task_type_info/'+topic
+    //这个params可以获取你要的饼图中的当前点击的项的参数，然后你走一个ajax，刷一个折线图出来。这只是我的思路，没有试过。
+    });
+
+
+
+}
+
+
+
+{%endblock%}

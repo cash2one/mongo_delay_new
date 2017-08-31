@@ -1,0 +1,140 @@
+{% extends "base_file.html" %}
+
+{% block cssfile %}
+   <style>
+
+       .guo1{
+       display:block !important;
+       }
+       .guo1 .guo1-2{
+        color:#ffffff !important;
+       }
+
+       .tbtext{
+        text-align:center !important;
+        font-size:15px;
+       }
+       .select-len{
+
+        width:150px;
+       }
+
+   </style>
+{% endblock%}
+
+
+
+
+{% block content %}
+<table class="table table-condensed test-edit">
+     <tr>
+         <td ></td>
+         <td ></td>
+         <td ></td>
+        <td ></td>
+        <td ></td>
+        <td ></td>
+    <td ></td>
+          <td name="1"></td>
+           <td width="150px">
+               <select>
+      <option task-type="script">脚本生成</option>
+      <option task-type="edit">自定义生成</option>
+        </select>
+           </td>
+         <td name="0">
+             <button type="submit" class="btn-warning btn-small" onclick="create_task(this)">生成任务</button>
+         </td>
+  </tr>
+    <tr class="success">
+    <td class="tbtext">序号</td>
+    <td class="tbtext">任务类型</td>
+    <td class="tbtext">任务周期</td>
+    <td class="tbtext">超时时间</td>
+    <td class="tbtext">任务总数</td>
+    <td class="tbtext">最近一次编辑时间</td>
+    <td class="tbtext">任务作者</td>
+<td class="tbtext"></td>
+  <td class="tbtext"><a  ><button class="btn-danger btn-small">动作</button></a></td>
+  <td class="tbtext"></td>
+  </tr>
+
+    <!--show_list是列表，每个元素是字典，包含类型，周期，超时时间，任务总数-->
+  {%for show_data in show_list%}
+    <tr class="success">
+    <td class="tbtext">{{ forloop.counter }}</td>
+    <td class="tbtext"><a href="/Back_manager/delete/{{show_data.topic}}">{{show_data.topic}}</a></td><!--指向获取任务具体内容的url-->
+
+    <td class="tbtext">
+        <select class="select-len">
+            {%for item in show_data.interval_list%}
+            <option disabled="disabled" selected = "selected">{{item}}</option>
+            {%endfor%}
+        </select>
+    </td>
+    <td class="tbtext">
+         <select class="select-len">
+            {%for item in show_data.timeout_list%}
+            <option disabled="disabled" selected = "selected">{{item}}</option>
+            {%endfor%}
+        </select>
+
+    </td>
+    <td class="tbtext">{{show_data.task_count}}</td>
+    <td class="tbtext">01/04/2017</td>
+    <td class="tbtext">Jay Guo</td>
+    <td class="tbtext"> <a href="/Back_manager/update_type_task/{{show_data.topic}}"><button type="submit" class="btn-info btn-small" type_task={{show_data.topic}} >编辑任务</button></a></td>
+    <td class="tbtext"> <a><button type="submit" class="btn-danger btn-small" onclick="clear_all_task(this)" type-task={{show_data.topic}} num-task={{forloop.counter}}>清除该类型任务</button></a></td>
+    <td class="tbtext"> <a  href="/Back_manager/lookup_type_task/?topic={{show_data.topic}}&page=1"><button type="submit" class="btn-success btn-small" type_task={{show_data.topic}}>查看所有</button></a></td>
+    </tr>
+
+    {%endfor%}
+
+
+</table>
+
+
+<table class="table table-condensed task-edit hide">
+    <tr class="success task-edit-son ">
+    <td><a style="font-size:20px;color:black">脚本名称</a></td>
+    <td><a style="font-size:20px;color:black">编辑时间</a></td>
+  <td><a style="font-size:20px;color:black">动作</a></td>
+  </tr>
+
+</table>
+
+
+<div  class="dark-matter user-edit-task hide" >
+    <h1 >编辑框
+        <span>Please fill all the texts in the fields.</span>
+    </h1>
+    <label>
+        <span>任务GUID:</span>
+        <input id="guid" type="text" name="guid" placeholder="" disabled="disabled"/>
+    </label>
+    <label>
+        <span>任务类型:</span>
+        <input id="topic" type="text" name="topic" placeholder="" disabled="disabled" />
+    </label>
+     <label>
+        <span>执行周期:</span>
+        <input id="interval" type="text" name="interval" placeholder="" />
+    </label>
+    <label>
+        <span>超时时间:</span>
+        <input id="timeout" type="text" name="timeout" placeholder=""/>
+    </label>
+
+    <label>
+    <span>&nbsp;</span>
+    <input type="submit" class="button" value="确定" />
+        <a  href="/Back_manager/main_manager" ><input type="button" class="button"  value="取消" /></a>
+    </label>
+</div>
+
+
+
+
+
+
+{%endblock%}

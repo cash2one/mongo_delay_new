@@ -1,0 +1,79 @@
+启动说明：
+    1.运行整个平台 run.py是总程序入口。(负责启动整个平台服务)
+    2.运行django框架：（mysite是django的整体框架）
+        用户信息保存在mysql表中，所以需要一下配置
+        一：第一次在机器上运行（需要安装pymysql）
+            进入 ／mysite/mysite/setting.py（django的配置文件）找到
+             DATABASES = {
+                    'default': {
+                        'ENGINE': 'django.db.backends.mysql',#使用mysql数据库
+                        'NAME': 'www',#mysql 数据库名称（指定自己的数据库，如果没有需要手动创建）
+                        'USER':'root',#mysql 数据库用户名
+                        #'PASSWORD':'jamepda',
+                        'PASSWORD':123456789, #mysql 数据库密码
+                        'HOST':'localhost', #数据库的ip
+                        'PORT':'3306',#数据库的端口
+                    }
+            }
+            进入mysite／mysite打开pycharm下的Terminal或者在终端进入该目录下执行以下两条命令
+            进入mysite／mysite目录下，运行python3 manager migrate（生成django依赖的mysql必要表）
+            进入mysite／mysite目录下，运行python3 manager makemigrations
+            进入mysite／mysite目录下，运行python3 manager runserver 0.0.0.0:8000 (该命令是启动Django框架，界面查看任务状况，0.0.0.0指定绑定本地ip)
+         二：以后只需要执行
+             进入mysite／mysite目录下，运行python3 manager runserver 0.0.0.0:8000 (该命令是启动Django框架，界面查看任务状况，0.0.0.0指定绑定本地ip)
+
+
+为了使任务属性的时间与apscheduler的时间一致，都采用datetime 时间
+
+
+细节部分，服务器在删除总任务时应该记录，告知客户端删除
+
+ERROR.txt是记录错误日志的
+
+
+
+关于apscheduler_server 目录结构说明：
+
+
+1:zmq_interface #该目录下的interface.py用zmq实现的与服务器通信的接口（可被web替换）
+
+2：apscheduler_server #任务调度中心服务器功能目录
+#目前服务器端与客户端支持zmq,http通信，介于zmq现存在的断连问题（客户端针对该问题进行了一些检测机制可以避免），建议选择http通信
+#服务器端与客户端的通信方式必须保持一致
+
+                                               |-----interface.py 服务器对外接口脚本，该目录与服务器通过网络通信，可以任意存放
+                  |------------zmq_interface-- |
+                  |                            |-----myapp.log   interface.py脚本中预留的记录日志接口的记录文档
+                  |
+                  |------------http_server.py 任务调度中心服务器和客户端的通信接口（http实现，可通过配置文件选择）
+                  |
+                  |------------zmq_server.py  任务调度中心服务器和客户端的通信接口 （zmq实现的，可通过配置文件选择）
+apscheduler_server|
+                  |------------aps_server.py 任务就绪，任务超时的逻辑部分
+                  |
+                  |------------获取代理（预留）
+                  |
+                  |------------获取 cookie（预留）
+                  |
+                  |
+                  |-------------other
+                  |
+                  |-------------run.py 程序入口
+                  |
+                  |
+                  |-------------install_module.py 下载脚本依赖的第三方脚本
+                  |
+                  |
+                  |-------------setting.py 总配置文件
+                  |
+                  |                                  |------scan_ipload_data.py#负责扫描存储数据的临时库，得到数据调用对应脚本存储
+                  |--------------upload_data_save----|
+                  将处理存储数据的逻辑脚本放在该目录下    |-------other(代指数据存储脚本，具体参照jd_task_kind.py脚本)
+                  |
+                  |
+                  |
+                  |---------------mysite (django框架实现的平台管理)
+
+
+关于数据存储：
+目前采用的方案：所有的数据都会存储到setting.py文件配置的数据库中，各个类型的数据根据任务类型存储到与该类型相同表名的的数据表中。

@@ -1,0 +1,36 @@
+{% extends "base_file.html" %}
+{% block cssfile %}
+   <style>
+
+       .guo3{
+       display:block !important;
+       }
+       .guo3 .guo1-1{
+        color:#ffffff !important;
+       }
+
+   </style>
+{% endblock%}
+
+
+{% block content %}
+<form action="/Back_manager/upload_script" method="post" class="dark-matter" enctype="multipart/form-data">
+    <h1>上传脚本
+        <span>Please select upload script file.</span>
+    </h1>
+    <label>
+        <span>选择上传文件:</span>
+        <input id="interval" type="file" name="myfile" />
+    </label>
+    <label>
+    <span>提交说明:</span>
+    <textarea id="message" name="message" placeholder="提交说明，在后台操作记录中可以查看"></textarea>
+    </label>
+
+    <label>
+    <span>&nbsp;</span>
+    <input type="submit" class="button" value="上传" />
+        <a href="/Back_manager/main_manager"><input type="button" class="button" value="取消" /></a>
+    </label>
+</form>
+{% endblock%}

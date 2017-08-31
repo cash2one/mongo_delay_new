@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta charset="utf-8" />
+    <title>后台管理</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="/static/public/media/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/public/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/public/media/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/public/media/css/style-metro.css" rel="stylesheet" type="text/css" />
+    <link href="/static/public/media/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/static/public/media/css/style-responsive.css" rel="stylesheet" type="text/css" />
+    <link href="/static/public/media/css/default.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="/static/public/media/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <!-- mask alert -->
+    <link href="/static/public/media/css/bootstrap-modal.css" rel="stylesheet" type="text/css" />
+    <!-- mask alert -->
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <link rel="shortcut icon" href="/static/public/media/image/favicon.png" />
+    <!-- END COPYRIGHT -->
+    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- BEGIN CORE PLUGINS -->
+    <script src="/static/public/media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+    <script src="/static/public/media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+    <script src="/static/public/media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+    <script src="/static/public/media/js/bootstrap.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+
+    <script src="/static/public/media/js/excanvas.min.js"></script>
+
+    <script src="/static/public/media/js/respond.min.js"></script>
+
+    <![endif]-->
+    <script src="/static/public/media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="/static/public/media/js/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="/static/public/media/js/jquery.cookie.min.js" type="text/javascript"></script>
+    <script src="/static/public/media/js/jquery.uniform.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="/static/public/media/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="/static/public/media/js/jquery.backstretch.min.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="/static/public/media/js/app.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <script src="/static/public/media/js/bootstrap-modal.js" type="text/javascript"></script>
+    <script src="/static/public/media/js/bootstrap-modalmanager.js" type="text/javascript"></script>
+    <script src="/static/public/media/js/ui-modals.js"></script>
+    <script src="/static/echarts.js"></script>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN PAGE LEVEL STYLES -->
+<!-- color引用 -->
+<link rel="stylesheet" href="/static/public/media/css/colpick.css" type="text/css" />
+<link rel="stylesheet" href="/static/public/static/css/website.css" type="text/css" />
+<link rel="stylesheet" href="/static/public/swiper/dist/css/swiper.min.css" type="text/css" />
+<!-- END PAGE LEVEL STYLES -->
+<!-- BEGIN BODY -->
+<style>
+   .dark-matter {
+margin-left: auto;
+margin-right: auto;
+max-width: 500px;
+background: #555;
+padding: 20px 30px 20px 30px;
+font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+color: #D3D3D3;
+text-shadow: 1px 1px 1px #444;
+border: none;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+}
+.dark-matter h1 {
+padding: 0px 0px 10px 40px;
+display: block;
+border-bottom: 1px solid #444;
+margin: -10px -30px 30px -30px;
+}
+.dark-matter h1>span {
+display: block;
+font-size: 11px;
+}
+.dark-matter label {
+display: block;
+margin: 0px 0px 5px;
+}
+.dark-matter label>span {
+float: left;
+width: 20%;
+text-align: right;
+padding-right: 10px;
+margin-top: 10px;
+font-weight: bold;
+}
+.dark-matter input[type="text"], .dark-matter input[type="email"], .dark-matter textarea, .dark-matter select {
+border: none;
+color: #525252;
+height: 25px;
+line-height:15px;
+margin-bottom: 16px;
+margin-right: 6px;
+margin-top: 2px;
+outline: 0 none;
+padding: 5px 0px 5px 5px;
+width: 70%;
+border-radius: 2px;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+background: #DFDFDF;
+}
+.dark-matter select {
+background: #DFDFDF url('/static/public/media/image/sidebar-toggler-brown.jpg') no-repeat right;
+background: #DFDFDF url('/static/public/media/image/sidebar-toggler-brown.jpg') no-repeat right;
+appearance:none;
+-webkit-appearance:none;
+-moz-appearance: none;
+text-indent: 0.01px;
+text-overflow: '';
+width: 70%;
+height: 35px;
+color: #525252;
+line-height: 25px;
+}
+.dark-matter textarea{
+height:100px;
+padding: 5px 0px 0px 5px;
+width: 70%;
+}
+.dark-matter .button {
+background: #FFCC02;
+border: none;
+padding: 10px 25px 10px 25px;
+color: #585858;
+border-radius: 4px;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+text-shadow: 1px 1px 1px #FFE477;
+font-weight: bold;
+box-shadow: 1px 1px 1px #3D3D3D;
+-webkit-box-shadow:1px 1px 1px #3D3D3D;
+-moz-box-shadow:1px 1px 1px #3D3D3D;
+}
+.dark-matter .button:hover {
+color: #333;
+background-color: #EBEBEB;
+}
+
+
+
+
+
+
+
+.ownshade{
+        position: fixed;
+         top: 0;
+        bottom: 0;
+        left:0;
+        right: 0;
+        background-color: coral;
+        z-index: 1031;
+        opacity: 0.1;
+}
+.edit-task{
+
+    position: fixed;
+    top: 50px;
+    left:10px;
+    right:200px;
+    z-index:1035;
+
+}
+
+.edit-task1{
+
+    position: fixed;
+    top: 50px;
+    right:50px;
+    left:900px;
+    z-index:1035;
+
+}
+
+ .hide{
+            display: none;
+        }
+.page-content{
+min-height:880px!important;
+}
+.setbg input[type="text"],
+.setcol .yu_bgcol {
+    background-color: initial!important;
+}
+</style>
+{% block cssfile %}
+{% endblock %}
+<body class="page-header-fixed">
+    <!-- BEGIN HEADER -->
+    <div class="header navbar navbar-inverse navbar-fixed-top">
+        <!-- BEGIN TOP NAVIGATION BAR -->
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <!-- BEGIN LOGO -->
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+                    <img src="/static/public/media/image/menu-toggler.png" alt="" />
+                </a>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <ul class="nav pull-right">
+                    <!-- BEGIN NOTIFICATION DROPDOWN -->
+                    <li class="dropdown" id="header_notification_bar">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon-warning-sign"></i>
+                            <span class="badge">6</span>
+                        </a>
+                        <ul class="dropdown-menu extended notification">
+                            <li>
+                                <p>其他服务</p>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="label label-success"><i class="icon-plus"></i></span> 功能介绍
+                                    <span class="time"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="label label-important"><i class="icon-bolt"></i></span> 使用指南
+                                    <span class="time"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- END NOTIFICATION DROPDOWN -->
+                    <!-- BEGIN USER LOGIN DROPDOWN -->
+                    <li class="dropdown user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img alt="" src="/static/public/media/image/avatar1_small.jpg"/>
+                            <span class="username"></span>
+                            <i class="icon-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a onclick="change_pwd('step1')"><i class="icon-lock"></i> 修改密码</a></li>
+                            <li><a href="/Back_manager/logout"><i class="icon-key"></i> 退出</a></li>
+                        </ul>
+                    </li>
+                    <!-- END USER LOGIN DROPDOWN -->
+                </ul>
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
+        </div>
+        <!-- END TOP NAVIGATION BAR -->
+    </div>
+    <!-- End HEADER -->
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container row-fluid">
+        <!-- BEGIN SIDEBAR -->
+        <div class="page-sidebar nav-collapse collapse">
+            <!-- Begin SIDEBAR MENU -->
+            <!-- BEGIN SIDEBAR MENU -->
+            <ul class="page-sidebar-menu">
+                <li>
+                    <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                    <div class="sidebar-toggler hidden-phone"></div>
+                    <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                </li>
+                <li class="start">
+                    <a href="">
+                        <i class=" icon-reorder"></i>
+                        <span class="title">菜单</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="icon-comments"></i>
+                        <span class="title">任务管理</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu guo1">
+                        <li>
+                            <a class="guo1-1" href="/Back_manager/task_info" >任务详情</a>
+                            <a class="guo1-2" href="/Back_manager/main_manager">任务编辑</a>
+                            <a class="guo1-3" href="">其他</a>
+                        </li>
+                    </ul>
+                </li>
+                 <li>
+                    <a href="javascript:;">
+                        <i class="icon-group"></i>
+                        <span class="title">设备管理</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu guo2">
+                        <li>
+                            <a href="">设备信息</a>
+                            <a href="">任务详情</a>
+                            <a href="">数据图表</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="icon-book"></i>
+                        <span class="title">脚本管理</span>
+                         <span class="arrow"></span>
+                    </a>
+                     <ul class="sub-menu guo3">
+                        <li>
+                            <a class="guo1-1" href="/Back_manager/upload_script">上传脚本</a>
+                            <a class="guo1-2" href="">其他</a>
+                            <a class="guo1-3" href=""></a>
+                        </li>
+                    </ul>
+                </li>
+                <!--  <li><a href="">360全景</a></li> -->
+                <li>
+                    <a href="javascript:;">
+                        <i class="icon-bullhorn"></i>
+                        <span class="title">数据统计</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu guo4">
+                        <li>
+                            <a class="guo1-1" href="">导出数据</a>
+                            <a class="guo1-2" href="">数据图表</a>
+                            <a class="guo1-3" href=""></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="icon-user"></i>
+                        <span class="title">用户管理</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu guo5">
+                        <li>
+                            <a class="guo1-1" href="">创建相册</a>
+                            <a class="guo1-2" href="">相册管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="icon-home"></i>
+                        <span class="title">微官网</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="icon-edit"></i>
+                        <span class="title">后台操作记录</span>
+                        <span class="arrow "></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="icon-pencil"></i>
+                        <span class="title">设置</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu guo6">
+                        <li>
+                            <a >我的杂志</a>
+                            <a href="">消息编辑</a>
+                            <a href="">杂志评论</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+            
+            <!-- END SIDEBAR MENU -->
+        </div>
+        <!-- END SIDEBAR -->
+        <!-- BEGIN PAGE -->
+        </div>
+    <div class="page-content" >
+     {% block content %}
+        {% endblock %}
+    </div>
+    <div class="page-content ownshade hide" ><!--遮罩层-->
+
+    </div>
+    <!--单个数据编辑框-->
+<div  class="dark-matter edit-task hide" onsubmit="return sumbit_sure(this)" >
+    <h1>任务编辑框
+        <span>Please fill all the texts in the fields.</span>
+    </h1>
+   <label>
+        <span>任务GUID:</span>
+        <input id="guid" type="text" name="guid" placeholder="" disabled="disabled"/>
+    </label>
+    <label>
+        <span>任务类型:</span>
+        <input id="topic" type="text" name="topic" placeholder="" disabled="disabled" />
+    </label>
+     <label>
+        <span>执行周期:</span>
+        <input id="interval" type="text" name="interval" placeholder="" />
+    </label>
+    <label>
+        <span>超时时间:</span>
+        <input id="timeout" type="text" name="timeout" placeholder=""/>
+    </label>
+    <label>
+        <span>任务状态:</span>
+        <input id="status" type="text" name="status" placeholder=""/>
+    </label>
+     <label>
+        <span>设备信息:</span>
+        <select name="selection" id="device">
+        <option id="device-one">查看详细内容</option>
+        </select>
+    </label>
+    <label>
+        <span>设备信息修改:</span>
+       <input id="device-show" type="text" name="device" placeholder=""/>
+    </label>
+
+    <label>
+        <span>Body信息:</span>
+        <select name="selection" id="body">
+        <option id="body-one">查看详细内容</option>
+        </select>
+    </label>
+       <label>
+        <span>Body信息修改:</span>
+       <input id="body-show" type="text" name="body" placeholder=""/>
+    </label>
+
+
+
+    <label>
+    <span>提交说明:</span>
+    <textarea id="message" name="message" placeholder="提交说明，在后台操作记录中可以查看"></textarea>
+    </label>
+
+
+    <label>
+    <span>&nbsp;</span>
+    <input type="submit" class="button update-task"  onclick="ajax_sure_btn(this)"   sure-type="all-filed" task-data=""  value="更新" />
+        <a ><input onclick="ajax_cancel_btn(this)"   type="button" class="button" cancel-type="all-filed" value="取消" /></a>
+    </label>
+</div>
+<div  class="dark-matter edit-task1 hide" >
+    <h1 >body编辑框
+        <span>Please fill all the texts in the fields.</span>
+    </h1>
+
+    <label>
+    <span>&nbsp;</span>
+    <input type="submit" class="button" value="确定"  sure-type="body-filed"   onclick="ajax_sure_btn(this)"/>
+        <a ><input onclick="ajax_cancel_btn(this)" type="button" class="button" cancel-type="body-filed" value="取消" /></a>
+    </label>
+</div>
+
+<div  class="dark-matter change-pwd hide" style="z-index:1035; position: fixed;
+    top: 50px;
+    left:10px;
+    right:200px;">
+    <h1 >修改管理员密码
+        <span>Please fill in the old password and the new password.</span>
+    </h1>
+    </label>
+       <label>
+        <span>旧密码:</span>
+       <input id="old-pwd" type="password" name="body" placeholder=""/>
+    </label>
+    </label>
+       <label>
+        <span>新密码:</span>
+       <input id="new-pwd" type="password" name="body" placeholder=""/>
+    </label>
+    </label>
+       <label>
+        <span>确认新密码:</span>
+       <input id="ok-pwd" type="password" name="body" placeholder=""/>
+    </label>
+    <label>
+    <span>&nbsp;</span>
+    <input type="submit" class="button" value="确定"  sure-type="body-filed"   onclick="change_pwd('step2')"/>
+        <a href="javascript:void(0)" onclick="location.reload()"><input  type="button" class="button"  value="取消" /></a>
+    </label>
+</div>
+
+
+
+    <!-- END CONTAINER -->
+    <!-- BEGIN FOOTER -->
+    <!-- END FOOTER -->
+    <!-- <script type="text/javascript" src="/media/js/yy_card.js"></script> -->
+    <script>
+    jQuery(document).ready(function() {
+        App.init();
+        UIModals.init();
+        // var swiper = new Swiper('.swiper-container');
+        $('.datainfo .span12,.loading').hide();
+    });
+
+
+    //批量删除和单个删除
+    function clear_all_task(self) {
+       type_task = $(self).attr('type-task')//获取任务类型
+       guid_task = $(self).attr('guid-task')//获取任务guid
+       var show_data = ''
+       num_task =  $(self).attr('num-task')//对应的序号
+       show_data = "序号："+num_task+"\n"
+       if (type_task){
+            show_data +="topic: "+type_task+"\n"
+       }
+       if (guid_task)
+       {
+            show_data +="guid: "+ guid_task
+
+       }
+
+        var gnl=confirm("确定删除 \n"+show_data+"\n的任务？");
+        if (gnl!=true){
+            return
+        }
+          $.ajax({
+                   url: "/Back_manager/delete_all_task",
+                   type: "POST",
+                  data:{topic:type_task,guid:guid_task},
+                  success:function (arg){
+                    data = JSON.parse(arg)
+                     if (typeof(data.login) !='undefined')//超过后台session有效时间
+                    {
+
+                        window.location.reload();
+                        return
+                    }
+                    if(data.status){
+                        alert(type_task+'清除成功')
+                        //可以刷新界面
+                          window.location.reload();
+                    }
+                    else{
+                        alert(data.mesg)
+                    }
+
+                   }
+               });
+
+    }
+
+
+    function sumbit_sure(self){
+        var gnl=confirm("确定要提交?");
+        if (gnl==true){
+        return true;
+        }else{
+        return false;
+        }
+}
+
+
+    //创建任务的点击事件
+    function create_task(self){
+           //"<tr ><td><a>脚本名称</a></td><td><a>运行时间</a></td><td><button>执行脚本</button></td></tr>"
+           var tmp = $(self).parent().siblings().eq(8).find("option:selected").attr("task-type");//找到按钮的同级标签的上一个标签的子元素select对应的选中值 tmp:值script指定脚本生成 ，edit指定手动编辑生成
+           $(".test-edit").addClass("hide")
+           if(tmp == "script")
+           {
+              
+              $(".task-edit").removeClass("hide")
+
+              //发送ajax请求
+                $.ajax({
+                   url: "/Back_manager/get_script_list",
+                   type: "POST",
+                  data:{page:1},//期望得到第几页的数据
+                  success:function (arg){
+                    data = JSON.parse(arg)
+                     if (typeof(data.login) !='undefined')//超过后台session有效时间
+                    {
+
+                        window.location.reload();
+                        return
+                    }
+                    if(data.status){
+                          $.each(data.mesg,function (script,time) {
+                          var tmp = "<tr ><td><a>"+script+"</a></td><td><a>"+time+"</a></td><<td><button>执行脚本</button></td></tr>"
+
+                       var link =
+                         $(tmp);
+                        $(".task-edit-son").after(link);
+                        link.addClass("success")
+                        $(link).find("a").css("color","#2559a4","font-size","20px")//为tr的子标签tb加样式
+                        $(link).find("button").addClass("btn-success")
+                        $(link).find("button").addClass("btn-small")
+                        $(link).find("button").attr("script_name",script)
+                        $(link).find("button").attr("onclick","excutor_script(this);")
+
+                    })
+
+                    }
+                    else{
+                        alert(data.mesg)
+                    }
+
+                   }
+               });
+
+           }
+           else{
+            $(".user-edit-task").removeClass("hide")
+           }
+
+
+    }
+    //向后端发送脚本名称
+    function excutor_script(self){
+    var script_name = $(self).attr("script_name");
+      $.ajax({
+                  url: "/Back_manager/excutor_script",
+                   type: "POST",
+                  data:{script_name:script_name},
+                    success:function (arg){
+                    data = JSON.parse(arg)
+                    if(data.status){
+                        alert("脚本执行成功")
+                        //脚本得到执行
+                    }
+                    else{
+                        alert("脚本未执行成功: "+data.mesg)
+
+                    }
+
+                   }
+               });
+
+
+    }
+    //编辑单个任务
+   function edit_signal_task(self){
+        $(".edit-task label").children("#device").children("#device-one").siblings().each(function(){
+                $(this).remove()
+
+
+          });
+            $(".edit-task label").children("#body").children("#body-one").siblings().each(function(){
+                $(this).remove()
+
+
+          });
+        $(".edit-task label").children("#device-show").val("")
+        $(".edit-task label").children("#body-show").val("")
+        guid = $(self).attr("guid-task")
+        $(".ownshade").removeClass("hide")//显示遮罩层
+        $(".edit-task").removeClass("hide")//显示编辑框
+
+        $.ajax({
+                   url: "/Back_manager/get_task_fields",
+                   type: "POST",
+                  data:{guid:guid},
+                  success:function (arg){
+                    data = JSON.parse(arg)
+                    if (typeof(data.login) !='undefined')
+                    {
+
+                        window.location.reload();
+                        return
+                    }
+
+                    if(data.status){
+
+                       //接受到服务器查询到的任务详细情况
+                        var props = "";
+                         // 开始遍历
+                         obj = data.mesg
+                         tmp = JSON.stringify(obj);
+
+                          a =$(".edit-task").find("label .update-task").attr('task-data',tmp)//将整个任务存放到更新按钮的task-data 属性中
+
+
+
+                         for(var p in obj)
+                         {
+
+                               if(typeof(obj[p])=="object"){
+                                    //对象套对象，生成复选框，复选框中填充记录的值
+                                    if (p == 'device')//设备信息
+                                    {
+
+                                    for(var inner in obj[p])//设备信息
+                                    {
+
+                                        var tag = document.createElement("option")//创建复选框
+                                        tag.innerHTML =inner//填充设备信息下的字段
+                                        tag.setAttribute('filed-value',obj[p][inner])//将字段值填充
+                                        tag.setAttribute('filed',inner)//将字段填充到标签
+                                        $(".edit-task label").children("#device").children("#device-one").after(tag);
+
+                                    }
+                                     $(".edit-task label").children("#device").attr('onchange','update_signel_task(this)')//增加点击事件，用于显示字段对应的值
+                                    }
+
+                                    if (p == 'body')//body信息
+                                    {
+                                      for(var inner in obj[p])//设备信息
+                                     {
+                                        var tag = document.createElement("option")//创建复选框
+
+                                        tag.innerHTML =inner
+                                         tag.setAttribute('filed',inner)//将字段填充到标签
+                                         if (typeof(obj[p][inner])=="object")
+                                         {
+                                           inner  = JSON.stringify(obj[p][inner]);
+                                            tag.setAttribute('filed-value',inner)
+                                         }
+                                         else{
+                                         tag.setAttribute('filed-value',obj[p][inner])//将字段值填充
+                                         }
+
+                                        $(".edit-task label").children("#body").children("#body-one").after(tag);
+                                      }
+                                     $(".edit-task label").children("#body").attr('onchange','update_signel_task(this)')//增加点击事件，用于显示字段对应的值
+                                    }
+
+                                 }else{
+
+                                    $(".edit-task label").children('#'+p).val(obj[p])//将数据填充到编辑框
+                                    $(".edit-task label").children('#'+p).attr('filed-value',obj[p])
+                                }
+
+                        }
+
+
+
+
+                    }
+                    else{
+                        alert(data.mesg)
+                    }
+
+                   }
+               });
+
+
+
+   }
+
+     function isEmptyObject(obj)
+     {
+         for(var i in value)
+         {
+            return flase;
+         }
+
+        return true;
+     }
+
+    //只支持两层字典
+    function update_signel_task(self){
+        value = $(self).find("option:selected").attr("filed-value");//得到该字段的值，将值填充到下方
+        chooice = $(self).val()//获取选中字段
+        //单个值直接填充到下方input框，多层字典弹出另一个编辑框
+        var loop = 0
+                try
+              {
+                value  = JSON.parse(value)
+
+                for(var i in value)
+                {
+
+                    loop +=1
+
+                }
+                if (!loop)//不是字典或者数组
+                {
+
+                    $(self).parent().next().children('input').val(value)
+                    $(self).parent().next().children('input').attr("filed-value",value)
+                    $(self).parent().next().children('input').attr("filed",chooice)
+                    $(self).parent().next().children('input').attr("onblur","onblur_update_task(this)")
+
+
+                }
+                else{
+
+                if (value instanceof Array)
+                {
+
+                     $(self).parent().next().children('input').val(value)
+                      $(self).parent().next().children('input').attr("filed-value",value)
+                     $(self).parent().next().children('input').attr("filed",chooice)
+                    $(self).parent().next().children('input').attr("onblur","onblur_update_task(this)")
+
+                }
+                else{
+                     //弹出body编辑框
+                    $(".edit-task1").removeClass('hide')
+                    $(".edit-task1 h1").text(chooice+':')
+                    $(".edit-task1 h1").attr('filed',chooice)
+
+                  $(".edit-task1 h1").siblings().each(function(){
+                            type = $(this).children('label input').attr('type')
+
+                            if (type == 'text')
+                            {
+                                $(this).remove()
+
+                            }
+
+                 });
+                  for(var item in value)//遍历对象展示在body编辑框
+                  {
+                   //动态生成显示框
+                  var tmp = "<label><span></span><input type='text'/></label>"
+                    var link =$(tmp);
+                     $(".edit-task1 h1").after(link)
+                    $(link).find("span").text(item)
+                    $(link).find("input").attr('filed',item)//字段加入input中
+                     $(link).find("input").attr('filed-value',value[item])//字段值加入
+                    if ( $(link).find("input").attr('filed-value') =="[object Object]")
+                    {
+                        //遍历，如果可以遍历说明是数组或者字典然后判断是字典显示被object ,不可修改框
+                        $(link).find("input").attr('disabled','disabled')
+
+                    }
+                    $(link).find("input").val(value[item])
+
+                  }
+
+
+
+                }
+
+                }
+
+              }
+              catch(err)
+              {
+              //在这里处理错误
+              $(self).parent().next().children('input').val(value)
+               $(self).parent().next().children('input').attr("filed-value",value)
+               $(self).parent().next().children('input').attr("filed",chooice)
+                    $(self).parent().next().children('input').attr("onblur","onblur_update_task(this)")
+
+              }
+
+    }
+
+   function test(self){
+    a = $(self).attr('ww')
+    b= JSON.parse(a)
+    alert(b.ggg)
+   }
+
+   function ajax_cancel_btn(self)//ajax 请求取消框函数
+   {
+
+        var flag = $(self).attr('cancel-type')
+        if (flag == 'body-filed')
+        {
+           //body修改点击取消
+          $(".edit-task1").addClass('hide')//隐藏body修改编辑框
+          //将body编辑框的数据还原
+          var obj = $(".edit-task1").children('label').siblings().each(function(){
+             var type = $(this).children("input").attr('type')
+             if(type =='text')
+             {
+                $(this).remove()
+
+             }
+          });//得到body编辑框的全部标签
+
+
+
+        }
+        if (flag == 'all-filed')
+        {
+           //编辑整个任务点击取消
+           $(".edit-task").addClass('hide')//隐藏整体任务编辑框
+           $(".edit-task1").addClass('hide')//隐藏body下的字典修改框
+           $(".ownshade").addClass("hide")//隐藏遮罩层
+
+        }
+
+
+   }
+
+   function ajax_sure_btn(self)//ajax 点击确定提交
+   {
+
+         var flag = $(self).attr('sure-type')
+         $(".edit-task1").addClass('hide')//隐藏body修改编辑框
+         if (flag == 'body-filed')//修改了对象值
+         {
+            //获得字典对象，从body编辑框读出数据，对比数据更改数据，重写对象
+            //获得body下修改的字典字段
+             var chooice = $(".edit-task1 h1").attr('filed')//得到body第一层的字段
+             var task = $(".edit-task").find("label .update-task").attr('task-data')//得到总任务数据
+             task = JSON.parse(task)
+              var obj = $(".edit-task1").children('label').siblings().each(function(){
+             var type = $(this).children("input").attr('type')
+              var old_filed_value = ''
+              var new_filed_value = ''
+              var filed
+             if(type =='text')
+             {
+
+                new_filed_value= $(this).children("input").val()//读出body框的数据
+                old_filed_value=$(this).children("input").attr('filed-value')//得到原始数据
+                if($.trim(new_filed_value) != old_filed_value)
+                {
+                    filed = $(this).children("input").attr('filed')//得到第二层的字段
+                    task.body[chooice][filed]=new_filed_value
+
+
+                }
+
+             }
+          });
+          task = JSON.stringify(task);
+          $(".edit-task").find("label .update-task").attr('task-data',task)//重新写入
+
+         }
+
+        if (flag == 'all-filed')//点击整体任务提交
+        {
+
+            $(".edit-task").addClass('hide')//隐藏整体任务编辑框
+            $(".ownshade").addClass("hide")//隐藏遮罩层
+            var interval = $(".edit-task").find("label #interval").val()//得到周期
+            var timeout =  $(".edit-task").find("label #timeout").val()//得到超时时间
+            var status = $(".edit-task").find("label #status").val()//得到状态
+
+            //ajax将任务发送到后端
+            var task = $(".edit-task").find("label .update-task").attr('task-data')//得到总任务数据
+            task = JSON.parse(task)
+            task['interval'] = $.trim(interval)
+            task['timeout'] = $.trim(timeout)
+            task['status'] = $.trim(status)
+            task = JSON.stringify(task);
+             $.ajax({
+                  url: "/Back_manager/update_signal_task",
+                  type: "POST",
+                  data:{type:"single",task:task},
+                    success:function (arg){
+                    if (typeof(data.login) !='undefined')//超过后台session有效时间
+                    {
+
+                        window.location.reload();
+                        return
+                    }
+
+                    data = JSON.parse(arg)
+                    if(data.status){
+                        alert("更新成功")
+                        //单个任务执行
+                    }
+                    else{
+                        alert("更新失败: "+data.mesg)
+
+                    }
+
+                   }
+               });
+
+        }
+
+   }
+
+
+    function onblur_update_task(self)
+    {
+
+        var filed_value = ''
+        //device &body input 失去焦点促发
+        input_value= $(self).val()//得到输入框的值
+        filed = $(self).attr('filed')//得到具体字段
+        one_filed = $(self).attr('name')//得到最外层字段
+        var task = $(".edit-task").find("label .update-task").attr('task-data')//得到总任务数据
+         task = JSON.parse(task)
+         filed_value = task[one_filed][filed]//得到字段默认值
+        if($.trim(input_value)!=filed_value)//数值发生改变就修改
+        {
+           task[one_filed][filed] = input_value
+           task = JSON.stringify(task);
+          $(".edit-task").find("label .update-task").attr('task-data',task)//重新写入
+        }
+
+    }
+
+    function change_pwd(arg){
+     if (arg == "step1")//修改
+     {
+      $(".change-pwd #old-pwd").val("")
+       $(".change-pwd #new-pwd").val("")
+      $(".change-pwd #ok-pwd").val("")
+      $(".ownshade").removeClass("hide")//显示遮罩层
+     $(".change-pwd").removeClass("hide")//显示密码编辑框
+     }
+     if (arg == "step2")//提交
+     {
+        old_pwd =$(".change-pwd #old-pwd").val()
+        new_pwd =$(".change-pwd #new-pwd").val()
+        ok_pwd =$(".change-pwd #ok-pwd").val()
+
+       $.ajax({
+              url: "/Back_manager/change_pwd",
+              type: "POST",
+              data:{old:old_pwd,new:new_pwd,ok:ok_pwd},
+                success:function (arg){
+                data = JSON.parse(arg)
+                if (typeof(data.login) !='undefined')//超过后台session有效时间
+                {
+
+                    window.location.reload();
+                    return
+                }
+                if(data.status){
+                     $(".ownshade").addClass("hide")//隐藏遮罩层
+                    $(".change-pwd").addClass("hide")//隐藏密码编辑框
+                    alert("密码更改成功")
+
+                }
+                else{
+                    alert("密码更新失败: "+data.mesg)
+                }
+
+               }
+           });
+
+     }
+      if (arg == "step3")// 取消
+     {
+         $(".ownshade").addClass("hide")//隐藏遮罩层
+        $(".change-pwd").addClass("hide")//隐藏密码编辑框
+
+      }
+    }
+     {% block jsfile %}
+    {% endblock %}
+
+    </script>
+
+    <!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+
+</html>

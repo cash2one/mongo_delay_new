@@ -1,0 +1,15 @@
+存放脚本入口函数的目录
+
+
+
+上传数据格式：
+{
+'guid':''#服务器任务的guid
+'topic':''#服务器任务的topic
+'upload_flag':''#上传是否成功的标识，
+'upload_type':''#上传数据的类型 data/html...
+'data_lenth_flag':1/0#上传数据是否大于16M
+'result':[{'platform':'','sort':'','kind':'','page':'','html':'isAntiSpider'},]
+'data':[{'time':timeStr,'key_search':0,'key_word':'','platform':'', 'sort':'', 'kind':'', 'page':'', 'order': ''},]
+'upload_time':  #上传数据时间
+}

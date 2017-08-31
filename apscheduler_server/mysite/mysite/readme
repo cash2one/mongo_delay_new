@@ -1,0 +1,9 @@
+框架使用说明：
+依赖的数据库：
+    mysql：用于管理用户
+    mongodb:用于数据操作
+
+目录结构说明：
+    Back_manager为后台管理的app，／Back_manager／db_oprate.py为封装的mongodb数据库操作，如果需要更换数据库，只需要替换该文件即可。
+
+该框架与apscheduler_server平台结合使用。

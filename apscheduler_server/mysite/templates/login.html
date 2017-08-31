@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>杰幂数据</title>
+<link href="/static/Wopop_files/style_log.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="login" mycollectionplug="bind">
+<div class="login_m">
+<div class="login_logo"><img src="/static/Wopop_files/logo.png" width="196" height="46"></div>
+<div class="login_boder">
+
+<div class="login_padding" id="login_model">
+
+  <h2>管理员账号</h2>
+  <label>
+    <input type="text" id="username" class="txt_input txt_input2" onfocus="if (value ==&#39;Your name&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;Your name&#39;}" value="Your name">
+  </label>
+  <h2>密码</h2>
+  <label>
+    <input type="password" name="textfield2" id="userpwd" class="txt_input" onfocus="if (value ==&#39;******&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;******&#39;}" value="******">
+  </label>
+
+  <div class="rem_sub">
+  <div class="rem_sub_l">
+  <input type="checkbox" name="checkbox" id="save_me">
+   <label for="checkbox">7天内自动登陆</label>
+   </div>
+    <label>
+      <input type="submit" class="sub_button" name="button" id="button" value="登录" style="opacity: 0.7;" onclick="fun()">
+    </label>
+  </div>
+</div>
+
+
+
+<!--login_padding  Sign up end-->
+</div><!--login_boder end-->
+</div><!--login_m end-->
+ <br> <br>
+<script src="/static/jquery-3.1.1.js"></script>
+<script>
+    function fun() {
+       username = $("#username").val()
+       password = $("#userpwd").val()
+       saveme = $("#save_me").is(':checked')
+        $.ajax({
+                   url: "/Back_manager/login",
+                   type: "POST",
+                  data:{username:username,password:password,save_me:saveme},
+                  success:function (arg){
+                    data = JSON.parse(arg)
+                    if(data.status){
+                        window.location.href="/Back_manager/main_manager";
+                        //登陆成功跳转到总管理界面
+                    }
+                    else{
+                        alert(data.mesg)
+                    }
+
+                   }
+               });
+
+    }
+</script>
+
+</body>
+</html>

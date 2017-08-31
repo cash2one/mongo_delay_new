@@ -1,0 +1,19 @@
+{
+  "max_request_count": 1000,
+  "max_task_len": 1000,
+  "max_data_len": 1000,
+  "max_push_data_len": 10,
+  "pull_task_url": "http://192.168.0.115:9000/get_crawl",
+  "push_data_url": "http://192.168.0.115:9000/post_pars",
+  "check_comm_status_url": "http://crawl.jamedata.com/Grab_Port/comm_status.php",
+  "run_mode": "JM_MODE",
+  "one_http_timeout": 10,
+  "content_compress":true,
+  "landeng_proxy_url": "",
+  "broadband": {
+    "is_open": false,
+    "interval": 60,
+    "account": "wangchao",
+    "password": "12314143"
+  }
+}
