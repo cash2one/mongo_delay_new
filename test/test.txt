@@ -1,0 +1,11 @@
+
+[info]
+a = 'dddd'
+pc = {'ggg.py':1.0,'ttt.py':1.0,'yyy.py':2.0}
+script_doc = '/home/cnadmin'
+phone = ['a1.py','a2.py','a3.py']
+
+
+
+
+elasticsearch用时>>>: 1.7213821411132813e-05 秒
